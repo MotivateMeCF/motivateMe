@@ -4,7 +4,7 @@
   "description": "App for motivateMe",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --inline",
+    "start": "eval $(cat .env) webpack-dev-server --inline",
     "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

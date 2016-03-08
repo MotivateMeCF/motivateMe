@@ -4,7 +4,7 @@ export default function(angularModule) {
             angularModule.factory(name, ['$resource', 'baseUrl',
                 function($resource, baseUrl) {
                   console.log(url);
-                    return $resource(`${url}`, {
+                    return $resource(`${baseUrl}${url}`, {
                         id: '@_id'
                     }, {
                         update: {
