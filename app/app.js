@@ -24,8 +24,7 @@ import './scss/main.scss';
  */
 const app = angular.module('myApp', [router, resource, satellizer, services, ngDialog, toastr]);
 
-const API_URL = 'http://localhost:3000/';
-const API_ENDPOINTS = 'api/v1/';
+app.constant( 'baseUrl', process.env.BASE_URL);
 
 components(app);
 authConfig(app);

@@ -10,8 +10,7 @@ export default function(angularModule) {
             restrict: 'E',
             template: motProject,
             controller: ['$scope', '$location', '$auth', 'toastr','ProfileService', function($scope, $location, $auth, toastr, ProfileService) {
-              //$scope.test = ProfileService.query();
-
+              $scope.test = ProfileService.query()
             }]
         };
     });
