@@ -9,13 +9,17 @@ export default function(angularModule) {
           replace: true,
           restrict: 'E',
           template: motLogin,
-          controller: ['$scope', '$rootScope', '$location', '$auth', 'toastr', function($scope, $rootScope, $location, $auth, toastr) {
+          controller: ['$scope', '$rootScope', '$location', '$auth', 'toastr', 'viewService', function($scope, $rootScope, $location, $auth, toastr, viewService) {
               $scope.login = function(user) {
                       $auth.login($scope.user)
                           .then(function(name) {
                               window.localStorage.setItem('userId', name.data.userId);
+
+                              //enable logout
+                              $scope.logout = true;
                               toastr.success('Your signed in!');
                               $location.path(`/${$rootScope.previousState}`);
+
                           })
                           .catch(function(error) {
                               toastr.error(error.data.message, error.status);
@@ -25,6 +29,9 @@ export default function(angularModule) {
                   $auth.authenticate(provider)
                       .then(function(name) {
                           window.localStorage.setItem('userId', name.data.userId);
+
+                          //enable logout
+                          $scope.logout = true;
                           toastr.success(`You are now signed in with ${provider}, thanks!`);
                           $location.path(`/${$rootScope.previousState}`);
                       })

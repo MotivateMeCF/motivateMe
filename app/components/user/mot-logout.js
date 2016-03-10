@@ -7,9 +7,9 @@ export default function(angularModule) {
             template: motLogout,
             controller: ['$scope', '$location', '$auth', 'toastr', function($scope, $location, $auth, toastr) {
                 $scope.logout = function() {
-                  console.log('ran');
                     $auth.logout()
                         .then(function() {
+                            $scope.logout = false;
                             toastr.info('You are logged out!');
                             $location.path('/');
                         })

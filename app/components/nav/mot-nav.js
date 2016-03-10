@@ -8,11 +8,9 @@ export default function(angularModule) {
                     replace: true,
                     restrict: 'E',
                     template: motNav,
-                    controller: ['$scope', 'viewService', function($scope, viewService) {
+                    controller: ['$scope', 'viewService', '$auth', function($scope, viewService, $auth) {
                           $scope.view = viewService;
-                          $scope.do = function(x) {
-                            console.log(x);
-                          };
+                          $scope.logout = $auth.isAuthenticated();
                         }]
                     }
             });

@@ -15,6 +15,9 @@ export default function(angularModule) {
                         .then(function(response) {
                             window.localStorage.setItem('userId', response.data.userId);
                             $auth.setToken(response);
+
+                            //enable logout
+                            $scope.logout = true;
                             toastr.info('You are now registered, thank!');
                             $location.path('/');
                         })
