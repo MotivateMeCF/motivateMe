@@ -18,9 +18,10 @@ const Comments = require('../models/Comment');
 //GET all projects
 router.get('/', (req, res, next) => {
   Projects.find()
-          .populate('author')
-          .lean()
-          .exec((err, projects) => {
+      .sort( {date: 'desc'} )
+      .populate('author')
+        .lean()
+        .exec((err, projects) => {
             if(err) {
               return res.status(500).send(err[0]);
             }
@@ -31,7 +32,7 @@ router.get('/', (req, res, next) => {
 router.get('/:id', (req, res, next) => {
   Comments.find({'project': req.params.id})
           .populate('author votes')
-          .lean()
+           .lean()
           .exec((err, comments) => {
             if(err) {
               return res.status(500).send(err);
@@ -41,3 +42,5 @@ router.get('/:id', (req, res, next) => {
 });
 
 module.exports = router;
+
+

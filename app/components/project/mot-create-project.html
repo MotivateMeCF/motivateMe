@@ -1,4 +1,6 @@
-<div class="projects-container">
+ <div class="projects-container">
+
+
 
   <p ng-show="savedProject">The project named {{savedProject.name}} was successfully posted</p>
 
@@ -12,7 +14,8 @@
            required
            type="text"></input>
     <br />
-    <label>Project Milestones</label>
+    <br>
+    <label>Project Milestones (comma separated)</label>
 
     <p> {{project.progress}} </p>
 
@@ -21,8 +24,23 @@
            required
            type="text"></input>
     <br />
-     <button ng-click="post()" type='submit'>ADD</button>
+
+    <br>
+
+    <label>I will finish this by:</label>
+    <pre> <em>{{dt | date:'fullDate' }}</em></pre>
+
+    <div style="display:inline-block; min-height:290px;">
+
+      <uib-datepicker ng-model="dt" class="well well-sm" datepicker-options="inlineOptions"></uib-datepicker>
+    </div>
+
+
+
+
+     <button ng-click="post()" type='submit'>Start This Project</button>
 
   </form>
+
 
 </div>

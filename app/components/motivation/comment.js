@@ -21,18 +21,36 @@ export default function(angularModule) {
               $scope.downs = votes.downs.length;
 
               function updateVote(str) {
-                if (votes[str].indexOf(userId) === -1) {
-                    votes[str].push(userId);
+                if (str === 'ups') {
+                  var notStr = 'downs';
+                } else {
+                  var notStr = 'ups';
+                }
+                console.log('String', str);
+                console.log('Not String', notStr);
+
+                if (votes[str].indexOf(userId) === -1 && votes[notStr].indexOf(userId) === -1) {
+                  votes[str].push(userId);
+                  votes.$update(res => {
+                    $scope[str] = res[str].length;
+                  });
+                  }
+                else if (votes[notStr].indexOf(userId) === -1 ){
+                  votes[str].splice(userId, 1);
                     votes.$update(res => {
                       $scope[str] = res[str].length;
                     });
-                  } else {
-                    votes[str].splice(userId, 1);
-                    votes.$update(res => {
-                      $scope[str] = res[str].length
-                    });
-                  }
-              }
+                }
+                else {
+                  votes[notStr].splice(userId, 1);
+                  votes[str].push(userId);
+                  votes.$update(res => {
+                    $scope[notStr] = res[notStr].length;
+                    $scope[str] = res[str].length;
+                  });
+                }
+              }//end updateVote
+
               $scope.vote = function(str) {
                 if (str === 'up') {
                   updateVote('ups')

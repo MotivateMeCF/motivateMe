@@ -12,6 +12,10 @@ const Comment = new Schema({
     require: true,
     ref: 'Project'
   },
+  progress: {
+    type: Schema.Types.ObjectId,
+    ref: 'Progress'
+  },
   content: String,
   tags: {
     type: String,
