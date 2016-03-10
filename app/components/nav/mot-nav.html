@@ -17,7 +17,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a class="navLink" ui-sref="profile.projects()">Profile</a></li>
                     <li><a class="navLink" ui-sref="feed">Feed</a></li>
-                    <li ng-show="view.name === 'banner'"><a class="headlineLink" ui-sref="user">Signin / Signup</a></li>
+                    <li ng-show="view.name === 'banner'" ng-hide="logout"><a class="headlineLink" ui-sref="user">Signin / Signup</a></li>
                     <li ng-show="logout"><logout class="headlineLink"></logout></li>
                 </ul>
             </div>

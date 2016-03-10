@@ -14,10 +14,6 @@ export default function(angularModule) {
                       $auth.login($scope.user)
                           .then(function(name) {
                               window.localStorage.setItem('userId', name.data.userId);
-
-                              //enable logout
-                              $scope.logout = true;
-                              toastr.success('Your signed in!');
                               $location.path(`/${$rootScope.previousState}`);
 
                           })
@@ -29,9 +25,6 @@ export default function(angularModule) {
                   $auth.authenticate(provider)
                       .then(function(name) {
                           window.localStorage.setItem('userId', name.data.userId);
-
-                          //enable logout
-                          $scope.logout = true;
                           toastr.success(`You are now signed in with ${provider}, thanks!`);
                           $location.path(`/${$rootScope.previousState}`);
                       })
