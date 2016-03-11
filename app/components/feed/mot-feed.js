@@ -19,8 +19,11 @@ export default function(angularModule) {
              },
             controller: [ '$scope', 'FeedService',
                 function( $scope, FeedService ){
+
                     $scope.projects = FeedService.query();
+
                     console.log('projects progress', $scope.projects);
+
                     $scope.projectView = function(project){
                         $scope.singleProjectView = project;
 
@@ -31,6 +34,17 @@ export default function(angularModule) {
                                    .then(res => {
                                         $scope.comments = res;
                                    });
+
+
+                        $scope.remaining = function(time, completion){
+                            console.log(Date.parse(time), Date.parse(completion) );
+
+                            var remains = Math.floor((1+ Date.parse(completion) - Date.parse(time)  )/86400000);
+                            console.log(remains, ' is remains');
+                            return remains;
+                        }
+
+
                     }
 
 

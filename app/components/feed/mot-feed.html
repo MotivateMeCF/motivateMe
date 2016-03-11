@@ -10,19 +10,25 @@
         <div class="projects">
             <aside class="project-meta">
                 <img class="project-avatar" src={{project.author.picture}}></img>
+
+
                 <div class="project-info">
-                    <p><a href="{{project.url}}" class="author-name">{{project.author.displayName}}</a></p>
+                    <p><a href="" class="author-name">{{userData.displayName}}</a></p>
                     <p>Created on
-                        <strong>{{project.time}}</strong>
+                        <strong>{{project.time}}</strong></p>
+                    <p>Completing on
+                        <strong>{{project.completion}}</strong></p>
+                    <p><strong>{{ remaining(project.time, project.completion) }} </strong>  Days Remaining Until Project Success </p>
+
                     </p>
                 </div>
+
+
+
             </aside>
             <img class="project-img" src="http://dealjumbo.com/wp-content/uploads/p451.jpg"></img>
 
             <div class="project-info">
-
-
-                <!--{{singleProjectView.time}}singleProjectView.time-->
 
 
                 <a href="" ng-click="projectView( project)">
@@ -35,6 +41,12 @@
                     <span class="glyphicon glyphicon-flag"></span> {{progress.content}}</p>
 
             </div>
+
+
+
+
+
+
         </div>
     </div>
 </section>

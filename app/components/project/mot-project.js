@@ -34,32 +34,12 @@ export default function(angularModule) {
                 };
 
 
-                //$scope.percentTime = function( completion ){
-                //    var now = new Date();
-                //    var totalTime = (time - completion);
-                //    var elapsedTime = (now - time);
-                //    var percentTime =  elapsedTime * 100;
-                //    return '34';
-                //}
-
                 $scope.remaining = function(time, completion){
                     console.log(Date.parse(time), Date.parse(completion) );
                     var remains = Math.floor((1+ Date.parse(completion) - Date.parse(time)  )/86400000);
                     console.log(remains, ' is remains');
                     return remains;
                 }
-
-
-                $scope.difference = function(datetime){
-                    datetime = Date.parse(datetime);
-                    var now = new Date();
-                    var diff =  Math.floor( 1 + ( datetime - now ) / 86400000);
-
-                    $scope.project.completion =  datetime;
-
-                    return diff;
-                }
-
 
 
 
@@ -69,3 +49,19 @@ export default function(angularModule) {
         };
     });
 }
+
+
+var myApp = angular.module("myApp", ["ui.bootstrap","countTo"]);
+
+myApp.controller("progressBar",function($scope,$timeout){
+
+    var amt = 66;
+
+    $scope.countTo = amt;
+    $scope.countFrom = 0;
+
+    $timeout(function(){
+        $scope.progressValue = amt;
+    }, 200);
+
+});

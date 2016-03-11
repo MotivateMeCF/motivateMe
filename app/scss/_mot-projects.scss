@@ -43,3 +43,13 @@
 .project-progress {
 
 }
+
+
+.progress {
+  height: 3em;
+  i { line-height: 3.5em; }
+}
+
+.progress-bar {
+  transition: width 1s ease-in-out;
+}
