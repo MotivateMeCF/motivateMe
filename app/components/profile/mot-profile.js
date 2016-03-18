@@ -17,11 +17,11 @@ export default function(angularModule) {
                     id: userId
                 });
 
-                ProjectService.query({
-                    id: userId
-                }).$promise.then((data) => {
-                    $scope.projects = data;
-                })
+                // ProjectService.query({
+                //     id: userId
+                // }).$promise.then((data) => {
+                //     $scope.projects = data;
+                // });
           }]
         }
     });

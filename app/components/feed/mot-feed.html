@@ -1,7 +1,5 @@
 <section>
-  <banner></banner>
-    <feed-detail ng-show="singleProjectView" ></feed-detail>
-
+    <banner></banner>
     <div class="project-container" ng-hide="singleProjectView"
          ng-repeat="project in projects">
 
@@ -32,7 +30,8 @@
             <img class="project-img" src="{{project.img}}"></img>
             </div>
             <div class="project-info">
-                <a ng-click="projectView( project)">
+                <!-- ng-click="projectView( project)" -->
+                <a  ui-sref='detail({ projectId: project._id })' ng-click="projectView( project)">
                     <h3>{{project.name}}</h3>
                 </a>
                 <p class="project-description">{{project.description}}</p>

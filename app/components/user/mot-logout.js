@@ -12,7 +12,7 @@ export default function(angularModule) {
                             // toastr.info('You are logged out!');
                             $scope.logout = $auth.isAuthenticated();
                             $scope.authed = false;
-                            // $location.path('/');
+                            $window.localStorage.clear();
                             $window.location = '/';
                         })
                         .catch(function(error) {

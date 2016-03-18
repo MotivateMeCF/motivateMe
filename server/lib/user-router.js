@@ -97,7 +97,6 @@ router.post('/twitter', function(req, res) {
         if (req.header('Authorization')) {
           User.findOne({ twitter: profile.id }, function(err, existingUser) {
             if (existingUser) {
-              console.log(existingUser);
               return res.status(409).send({ message: 'There is already a Twitter account that belongs to you' });
             }
             var token = req.header('Authorization').split(' ')[1];
@@ -109,8 +108,9 @@ router.post('/twitter', function(req, res) {
               user.twitter = profile.id;
               user.displayName = user.displayName || profile.name;
               user.picture = user.picture || profile.profile_image_url.replace('_normal', '');
-              user.save(function(err, savedUser) {
-                res.send({ token: createJWT(user), userId: savedUser._id });
+              user.save(function(err) {
+                if(err) console.log(err);
+                res.send({ token: createJWT(user), userId: user._id });
               });
             });
           });
@@ -120,11 +120,17 @@ router.post('/twitter', function(req, res) {
               return res.send({ token: createJWT(existingUser), userId: existingUser._id });
             }
             var user = new User();
+            console.log(user, '1');
             user.twitter = profile.id;
             user.displayName = profile.name;
             user.picture = profile.profile_image_url.replace('_normal', '');
-            user.save(function(err, savedUser) {
-              res.send({ token: createJWT(user), userId: savedUser._id});
+                        console.log('user here', user);
+
+            user.save(function(err) {
+              if(err){
+                res.status(500).send(err);
+              }
+              res.send({ token: createJWT(user), userId: user._id});
             });
           });
         }

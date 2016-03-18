@@ -16,14 +16,24 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/:id', (req, res, next) => {
-  Comments.find({'project': req.params.id})
-          .populate('author votes')
+  Projects.find({_id: req.params.id})
+          .populate('author progress')
           .lean()
-          .exec((err, comments) => {
+          .exec((err, project) => {
             if(err) {
               return res.status(500).send(err);
             }
-            res.send(comments);
+            Comments.find({'project': req.params.id})
+                    .populate('author votes')
+                    .lean()
+                    .exec((err, comments) => {
+                      if(err) {
+                        return res.status(500).send(err);
+                      }
+                      project[0].comments = comments;
+                      res.send(project);
+                    });
+
           });
 });
 

@@ -1,20 +1,21 @@
-<div>
+<div class="content">
     <p class="red-accent"><b>{{message}}</b></p>
-    <label>Project Name:</label>
+    <h4>Project Name:</h4>
     <input ng-model="project.name"></input>
 
-    <label>Description:</label>
-    <textarea ng-model="project.description"></textarea>
+    <h4>Description:</h4>
+    <input ng-model="project.description"></input>
     <br />
 
-    <label>Progress:</label>
+    <h4>Progress:</h4>
     <div ng-repeat="progress in project.progress">
        {{progress.content}}
        <input type="checkbox"
               ng-model="progress.done"
-              ng-change="progress.done">
+              ng-change="progress.done"
+              class="checkbox">
               <span ng-show="progress.done">Finished</span>
        </input>
     </div>
-    <button class="btn" ng-click="update(project)">Save</button>
+    <button class="btn-edit" ng-click="update(project)">Save</button>
 </div>

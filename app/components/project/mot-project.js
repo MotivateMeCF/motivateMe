@@ -9,11 +9,11 @@ export default function(angularModule) {
             replace: true,
             restrict: 'E',
             template: motProject,
-            controller: ['$scope', '$stateParams', 'FeedService', 'viewService', '$window', function($scope, $stateParams, FeedService, viewService, $window) {
+            controller: ['$scope', '$stateParams', 'ProjectService', 'viewService', '$window', function($scope, $stateParams, ProjectService, viewService, $window) {
                 $scope.view = viewService;
                 var userId = $window.localStorage.getItem('userId');
-                FeedService.query({
-                    _id: userId
+                ProjectService.query({
+                    query: {author: userId}
                 }).$promise.then((data) => {
                     $scope.projects = data;
                     $scope.projects.map(project => {

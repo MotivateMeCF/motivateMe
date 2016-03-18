@@ -7,10 +7,7 @@ export default function(angularModule) {
                 return {
                     replace: true,
                     restrict: 'E',
-                    template: userTemplate,
-                    // scope: {
-                    //   logout: '='
-                    // }
+                    template: userTemplate
                   }
             });
 }

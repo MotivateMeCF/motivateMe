@@ -35,23 +35,19 @@ export default function(angularModule) {
                     });
                     $scope.projectView = function(project){
                         $scope.singleProjectView = project;
-                        FeedService.query({'id':project._id}, res => {
-                                  $scope.comments = res;
-                                  $scope.comments.sort(compare);
-                                 });
-                        $scope.singleProjectView.time = project.time.substring(0,10);
-                        //For milestone progress bar:
-                        $scope.max = $scope.singleProjectView.progress.length;
-                        $scope.value = 0;
-                        $scope.singleProjectView.progress.forEach(progress => {
-                            if (progress.done === true) {
-                                $scope.value += 1;
-                            }
-                        });
-
-
-
-
+                        // FeedService.query({'id':project._id}, res => {
+                        //           $scope.comments = res;
+                        //           $scope.comments.sort(compare);
+                        //          });
+                        // $scope.singleProjectView.time = project.time.substring(0,10);
+                        // //For milestone progress bar:
+                        // $scope.max = $scope.singleProjectView.progress.length;
+                        // $scope.value = 0;
+                        // $scope.singleProjectView.progress.forEach(progress => {
+                        //     if (progress.done === true) {
+                        //         $scope.value += 1;
+                        //     }
+                        // });
                     };
 
                     $scope.remaining = function(time, completion){

@@ -12,7 +12,7 @@ export default function(angularModule) {
             // scope: {
             //     logout: '='
             // },
-            controller: ['$scope','$location', '$auth', 'toastr', function($scope, $location, $auth, toastr) {
+            controller: ['$scope','$location', '$auth', 'toastr', '$rootScope', function($scope, $location, $auth, toastr, $rootScope) {
                 $scope.signupUser = function() {
                     $auth.signup($scope.user)
                         .then(function(response) {
@@ -22,8 +22,8 @@ export default function(angularModule) {
                             $scope.logout = $auth.isAuthenticated();
                             $scope.needSignIn = false;
                             $scope.authed = true;
-                            $location.path('/');
-                            // $location.path(`/${$rootScope.previousState}`);
+                            // $location.path('/');
+                            $location.path(`/${$rootScope.previousState}`);
                         })
                         .catch(function(response) {
                           toastr.error(response.data.message);

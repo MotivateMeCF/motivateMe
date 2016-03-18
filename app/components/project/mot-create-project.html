@@ -1,5 +1,4 @@
 <div class="projects-container">
-    <p ng-show="savedProject">The project named {{savedProject.name}} was successfully posted</p>
     <form>
         <h4>Name</h4>
         <input name="projectName" ng-model="project.name" required type="text"></input>
@@ -25,5 +24,6 @@
             <uib-datepicker ng-model="dt" class="well well-md" datepicker-options="inlineOptions" ng-click="difference(dt)"></uib-datepicker>
         </div>
         <button ng-click="post()" type='submit'>Start This Project</button>
+        <p ng-show="savedProject">The project named {{savedProject.name}} was successfully posted</p>
     </form>
 </div>

@@ -6,7 +6,7 @@ const ProvidePlugin = webpack.ProvidePlugin;
 module.exports = {
     entry: ['bootstrap-loader', path.resolve(__dirname, './app.js')],
     output: {
-        path: path.resolve(__dirname, '../../motivateDeploy/public'),
+        path: path.resolve(__dirname, '../server/public'),
         filename: 'bundle.js'
     },
     devtool: 'source-map',

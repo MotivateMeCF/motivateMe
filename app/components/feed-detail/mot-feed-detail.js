@@ -6,25 +6,24 @@ export default function(angularModule) {
         return {
             replace: true,
             restrict: 'E',
-            template: motFeedDetail,
-            controller: ['$scope', '$auth', 'ProgressService', 'CommentService', function($scope, $auth, ProgressService, CommentService) {
-              if ($auth.isAuthenticated()) {
-                $scope.authed = true;
-              }
-              else {
-                $scope.authed = false;
-              };
+            template: motFeedDetail
+            // controller: ['$scope', '$auth', 'ProgressService', 'CommentService', '$stateParams', 'FeedService', function($scope, $auth, ProgressService, CommentService, $stateParams, FeedService) {
+              // if ($auth.isAuthenticated()) {
+              //   $scope.authed = true;
+              // }
+              // else {
+              //   $scope.authed = false;
+              // };
               //To return to public feed
-              $scope.returnToFeed = function(){
-                $scope.singleProjectView = null;
-              }
-              $scope.selectProg = function(prog, id) {
-                $scope.commentOn = prog;
-                $scope.commentProgId = id;
-              }
+              // $scope.returnToFeed = function(){
+              //   $location.path = '/';
+              // }
+              // $scope.selectProg = function(prog, id) {
+              //   $scope.commentOn = prog;
+              //   $scope.commentProgId = id;
+              // }
               // $scope.comments = $scope.singleProjectView.query();
-            }]
-        }
-
-        })
-    }
+            // }]
+        };
+  });
+}
